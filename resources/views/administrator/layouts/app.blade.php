@@ -74,6 +74,10 @@
     <script src="{{asset('js/bootstrap.js')}}"></script>
     <script src="{{asset('js/admin.js')}}"></script>
     <script src="{{asset('js/pace.min.js')}}"></script>
+    <script type="text/javascript">
+
+        CKEDITOR.replace("ckeditor");
+    </script>
 
 </body>
 </html>

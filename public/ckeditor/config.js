@@ -3,23 +3,30 @@
  * For licensing, see https://ckeditor.com/legal/ckeditor-oss-license
  */
 
+//CKEDITOR.editorConfig = function( config ) {
+	// Define changes to default configuration here. For example:
+	// config.language = 'fr';
+	// config.uiColor = '#AADC6E';
+//};
 CKEDITOR.editorConfig = function( config ) {
+	config.language = 'vi';
 	config.toolbarGroups = [
 		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
 		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
 		{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
 		{ name: 'forms', groups: [ 'forms' ] },
 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+		'/',
 		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
 		{ name: 'links', groups: [ 'links' ] },
 		{ name: 'insert', groups: [ 'insert' ] },
-		{ name: 'colors', groups: [ 'colors' ] },
 		'/',
 		{ name: 'styles', groups: [ 'styles' ] },
+		{ name: 'colors', groups: [ 'colors' ] },
 		{ name: 'tools', groups: [ 'tools' ] },
 		{ name: 'others', groups: [ 'others' ] },
 		{ name: 'about', groups: [ 'about' ] }
 	];
 
-	config.removeButtons = 'Save,NewPage,Preview,Print,Templates,PasteFromWord,PasteText,Scayt,SelectAll,Find,Replace,Form,Checkbox,TextField,Radio,Textarea,Select,Button,ImageButton,HiddenField,Flash,Image,Table,HorizontalRule,Smiley,SpecialChar,PageBreak,Anchor,Language,BidiRtl,BidiLtr,CreateDiv,Outdent,Indent,Blockquote,RemoveFormat,About,Maximize,ShowBlocks,Styles,Format,CopyFormatting';
+	config.removeButtons = 'About,ShowBlocks,Maximize,Styles,Format,Image,Flash,Table,HorizontalRule,Smiley,PageBreak,SpecialChar,Anchor,Language,BidiRtl,BidiLtr,Blockquote,CreateDiv,RemoveFormat,CopyFormatting,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Scayt,SelectAll,Find,Replace,PasteFromWord,Save,NewPage';
 };

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DanhMuc;
 use Validator;
+use File;
 
 class DanhMucController extends Controller
 {
@@ -28,7 +29,7 @@ class DanhMucController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
         }
-        $danhmuc= new DanhMuc;
+        $danhmuc= new DanhMuc();
         $danhmuc->TenDanhMuc = $request->TenDanhMuc;
         $danhmuc->MoTa = htmlentities($request->MoTa);
         $danhmuc->TrangThai = 1;
@@ -66,7 +67,7 @@ class DanhMucController extends Controller
     }
     public function getSuaDanhMuc(Request $request)
     {
-        $danhmuc = DanhMuc::get();
+        $danhmuc = DanhMuc::where('TrangThai',1)->get();
         $danhmucid = DanhMuc::where('ID',$request->id)->first();
         if(! $danhmucid) {
             return redirect()->back()->withErrors(['errors' => ['Không tìm thấy danh mục']]);
@@ -93,9 +94,9 @@ class DanhMucController extends Controller
             {
                 $file_path = 'public/HinhAnh/'.$danhmuc->HinhAnh;
                 // $file_path = $danhmuc->HinhAnh;
-                // return $file_path;
-                if('file_exists($file_path)') {
-                    // File::delete('public/HinhAnh/'.$danhmuc->HinhAnh);
+                // dd( $file_path);
+                if(file_exists($file_path)) {
+                    File::delete('public/HinhAnh/'.$danhmuc->HinhAnh);
                     // Storage::disk('s3')->delete('$file_path');
 
                     // unlink('$file_path');
