@@ -32,6 +32,9 @@
      <div class="form-group">
         <label for="MoTa">Mô Tả</label>
         <textarea class="form-control" id="ckeditor" name="MoTa" rows="4">@if(isset($danhmucid)){!!$danhmucid->MoTa!!}@endif</textarea>
+        <script type="text/javascript">
+            CKEDITOR.replace("ckeditor");
+        </script>
     </div>
     <button type="submit" class="btn btn-primary">@if(isset($danhmucid)){!!'Sửa Danh Mục'!!}@else{!!'Thêm Danh Mục'!!}@endif</button>
 </form>

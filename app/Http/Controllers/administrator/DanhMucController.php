@@ -6,13 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DanhMuc;
 use Validator;
-use File;
 
 class DanhMucController extends Controller
 {
     public function index()
     {
-        $danhmuc = DanhMuc::paginate(10);
+        $danhmuc = DanhMuc::paginate(5);
         return view('administrator.DanhMucSanPham.indexDanhMuc')->with(['danhmuc' => $danhmuc]);
     }
     public function getThemDanhMuc()
@@ -34,6 +33,7 @@ class DanhMucController extends Controller
         $danhmuc->MoTa = htmlentities($request->MoTa);
         $danhmuc->TrangThai = 1;
         $danhmuc->created_at = time();
+        $danhmuc->updated_at = null;
         if($request->hasFile('HinhAnh'))
         {
             $ext = ['gif','jpg','jpge','png','svg'];
@@ -92,17 +92,9 @@ class DanhMucController extends Controller
             $danhmuc->updated_at = time();
             if($request->hasFile('HinhAnh'))
             {
-                $file_path = 'public/HinhAnh/'.$danhmuc->HinhAnh;
-                // $file_path = $danhmuc->HinhAnh;
-                // dd( $file_path);
+                $file_path = $_SERVER['DOCUMENT_ROOT'].'/cuulongseed/public/Hinh-Anh/'.$danhmuc->HinhAnh;
                 if(file_exists($file_path)) {
-                    File::delete('public/HinhAnh/'.$danhmuc->HinhAnh);
-                    // Storage::disk('s3')->delete('$file_path');
-
-                    // unlink('$file_path');
-                }
-                else {
-                    return 'khong';
+                    unlink($file_path);
                 }
                 $ext = ['gif','jpg','jpge','png','svg'];
                 //get filename with extension
@@ -130,10 +122,25 @@ class DanhMucController extends Controller
         else
             return redirect()->back()->withErrors(['errors' => ['Danh mục sửa không thành công']]);
     }
-    // public function getXoaDanhMuc()
-    // {
-    //     $danhmuc = DanhMuc::find($request->id);
-    // }
-
-
+    public function getXoaDanhMuc(Request $request)
+    {
+        $danhmuc = DanhMuc::find($request->id);
+        if($danhmuc)
+        {
+            //check dien kien co san pham
+            if($danhmuc->HinhAnh==='noimage.jpg')
+            {
+                $danhmuc->delete();
+            }
+            else {
+                $file_path = $_SERVER['DOCUMENT_ROOT'].'/cuulongseed/public/Hinh-Anh/'.$danhmuc->HinhAnh;
+                if(file_exists($file_path)) {
+                    unlink($file_path);
+                }
+                $danhmuc->delete();
+            }
+            return redirect(Route('danhmuc'));
+        }
+        return redirect()->back()->withErrors(['errors' => ['Không thể xóa danh mục']]);
+    }
 }

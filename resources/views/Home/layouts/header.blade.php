@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row" style="height:120px;">
                 <div class="logo my-auto">
-                    <img src="images/logo2.png" alt="logo cuu long" width="100%">
+                    <img src="/cuulongseed/public/Hinh-Anh/Logo/banner.jpg" alt="logo cuu long" style="height:120px; width:660px;" width="100%">
                 </div>
                 <div class="menu-top-left">
                     <ul title="Giỏ Hàng" class=" menu-top-block">
@@ -17,11 +17,9 @@
                             </a>
                         </li>
                     </ul>
-                    <ul title="Đăng Nhập" class=" menu-top-block">
+                    <ul class=" menu-top-block">
                         <li>
-                            <a class="color-top" href="{{url('login')}}">
-                                <i class="fas fa-sign-in-alt fa-2x"></i>
-                            </a>
+                            <a title="Đăng Nhập" href="{{url('login')}}">Đăng Nhập</a>
                         </li>
                     </ul>
                 </div>
@@ -39,29 +37,16 @@
                     <li class="nav-item {{ Request::is('/') ? 'active':''}}">
                         <a class="nav-link" href="/">Trang Chủ<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item {{ Request::is('danh-muc-san-pham') ? 'active':''}}">
-                        <a class="nav-link" href="danh-muc-san-pham">Danh Mục Sản Phẩm</a>
+                    <li class="nav-item {{ Request::is('danhmuc') ? 'active':''}}">
+                        <a class="nav-link" href="danhmuc">Danh Mục Sản Phẩm</a>
                     </li>
                     <li class="nav-item  {{ Request::is('#') ? 'active':''}}">
                         <a class="nav-link" href="#">Tuyển Dụng</a>
                     </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Khác
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Khổ qua</a>
-                            <a class="dropdown-item" href="#">Mướp</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Sen</a>
-                        </div>
+                    <li class="nav-item  {{ Request::is('#') ? 'active':''}}">
+                        <a class="nav-link" href="#">Tin Tức CuuLongSEED</a>
                     </li>
                 </ul>
-                <!-- <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form> -->
             </div>
         </div>
     </nav>

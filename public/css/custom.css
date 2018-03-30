@@ -92,6 +92,9 @@ _________________code here
     margin: 0 2rem;
 }
 /* product */
+a.item {
+    text-decoration: none;   
+}
 .product {
     margin-top: 1rem;
 }
@@ -162,6 +165,7 @@ h1.product-title {
 	overflow: hidden;
 	background: #fff;
 	opacity: 0;
+    height: calc(100% - 55px);
 	cursor: pointer;
 	transition: all ease 0.5s;
 }

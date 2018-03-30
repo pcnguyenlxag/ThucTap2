@@ -25,17 +25,20 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <?php $temp=0; ?>
                         @foreach($danhmuc as $dm)
+                            <?php $temp=$temp+1; ?>
+                            <?php $path='/cuulongseed/public/Hinh-Anh/' ?>
                             <tr>
-                                <th style="width:5%">{{$dm->ID}}</th>
-                                <td style="width:20%">{{$dm->TenDanhMuc}}</td>
-                                <td style="width:15%">{{$dm->HinhAnh}}</td>
+                                <th style="width:5%">{{$temp}}</th>
+                                <td id="name" style="width:20%">{{$dm->TenDanhMuc}}</td>
+                                <td style="width:15%"><img src="{{$path}}{{$dm->HinhAnh}}" alt="{{$dm->TenDanhMuc}}" class="img-thumbnail"></td>
                                 <td style="max-width:50%; overflow:auto;">{!!html_entity_decode($dm->MoTa)!!}</td>
                                 <td style="width:10%">
                                     <a href="{{Route('suadanhmuc',$dm->ID)}}" class="btn btn-success btn-sm">
                                         <i class="far fa-edit" aria-hidden="true"></i>
                                     </a>
-                                    <a href="#" class="btn btn-danger btn-sm xoa">
+                                    <a href="{{Route('xoadanhmuc',$dm->ID)}}" class="btn btn-danger btn-sm xoa">
                                         <i class="far fa-trash-alt" aria-hidden="true"></i>
                                     </a>
                                 </td>
