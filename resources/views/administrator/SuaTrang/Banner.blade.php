@@ -1,8 +1,13 @@
 @extends('administrator.layouts.app')
 @section('title','Quản lý Banner')
 @section('content')
+<div class="app-title">
+    <div>
+        <h1><i class="fas fa-plus pr-2"></i>Danh Sách Banner</h1>
+        <p>Bạn có thể quản lý banner</p>
+    </div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<?php $path='/cuulongseed/public/Hinh-Anh/Slider/' ?>
 @foreach($errors->all() as $err)
     <div class="alert alert-warning" role="alert">
         {{$err}}
@@ -48,7 +53,7 @@
                     @foreach($banner as $bn)
                     <tr>
                         <th style="width:15%;">{{$bn->ID}}</th>
-                        <td style="width:65%;" ><img src="{{$path}}{{$bn->HinhAnh}}" class="img-thumbnail img-fluid" style="max-height:7rem;"></td>
+                        <td style="width:65%;" ><img src="/cuulongseed/public/Hinh-Anh/Slider/{{$bn->HinhAnh}}" class="img-thumbnail img-fluid" style="max-height:7rem;"></td>
                         <td style="width:20%;">
                             <a href="{{Route('getxoaslider',$bn->ID)}}" class="btn btn-danger btn-sm xoa">
                                 <i class="far fa-trash-alt" aria-hidden="true"></i>

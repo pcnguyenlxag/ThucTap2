@@ -1,4 +1,5 @@
 @extends('Home.layouts.apps')
+@section('title','Chi Tiết Sản Phẩm - CUULONGSEED')
 @section('content')
 <div class="product-container my-2">
     <div class="container">
@@ -7,7 +8,7 @@
                 <div class="col-md-12" style="display:flex;">
                     <div class="col-md-5">
                         <div class="product-image">
-                            <img src="http://via.placeholder.com/250x150" alt="">
+                            <img src="/cuulongseed/public/Hinh-Anh/San-Pham/{{$product->HinhAnh}}" alt="">
                         </div>
                     </div>
                     <div class="col-md-7">
@@ -38,7 +39,10 @@
                     <div class="product-intro">
                         <h1 class="product-title">chi tiết sản phẩm</h1>
                     </div>
-                    <p>{!!html_entity_decode($product->ThuocTinh)!!}</p>
+                    <div class="product-detail">
+                        {!!html_entity_decode($product->ThuocTinh)!!}
+                    </div>
+
                 </div>
             </div>
             <div class="col-md-3" style="display:flex; flex-direction:column">

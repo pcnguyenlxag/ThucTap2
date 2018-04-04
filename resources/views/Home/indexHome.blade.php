@@ -3,7 +3,6 @@
     @parent
 @endsection
 @section('content')
-<?php $path='/cuulongseed/public/Hinh-Anh/Slider/' ?>
 <div class="index-carousel">
     <div class="container-fluid">
         <div class="row">
@@ -13,7 +12,7 @@
                         <div class="carousel-inner">
                             @foreach($slider as $value)
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="{{$path}}{{$value->HinhAnh}}" alt="First slide">
+                                <img class="d-block w-100 img-fluid" src="/cuulongseed/public/Hinh-Anh/Slider/{{$value->HinhAnh}}" alt="First slide">
                             </div>
                             @endforeach
                             <script type="text/javascript">
@@ -42,7 +41,7 @@
                     @foreach($subslider as $value)
                     <div class="slider my-1">
                         <a href="">
-                            <img src="{{$path}}{{$value->HinhAnh}}" >
+                            <img class="img-fluid" src="/cuulongseed/public/Hinh-Anh/Slider/{{$value->HinhAnh}}" >
                         </a>
                     </div>
                     @endforeach
@@ -81,14 +80,13 @@
 </div> -->
 <!-- ******************* -->
 <!-- ******************************* -->
-<?php $path2='/cuulongseed/public/Hinh-Anh/San-Pham/'; ?>
 <div class="product">
     <div class="container-fluid">
         <div class=" d-flex flex-row">
             <div class="col-md-3 d-sm-none d-md-block">
                 <div class="sidebar-img">
                     @foreach($banner as $bn)
-                    <img class="rounded img-fluid my-1" src="{{$path}}{{$bn->HinhAnh}}">
+                    <img class="rounded img-fluid my-1" src="/cuulongseed/public/Hinh-Anh/Slider/{{$bn->HinhAnh}}">
                     @endforeach
                 </div>
             </div>
@@ -102,7 +100,7 @@
                             @foreach($product as $value)
                             <a class="ml-3 mb-3 item" href="{{url('sanpham/chitiet/'.$value->ID)}}">
                                 <div class="card">
-                                    <img width="150" height="180" class="card-img-top" src="{{$path2}}{{$value->HinhAnh}}" alt="{{$value->TenSanPham}}">
+                                    <img width="150" height="180" class="card-img-top" src="/cuulongseed/public/Hinh-Anh/San-Pham/{{$value->HinhAnh}}" alt="{{$value->TenSanPham}}">
                                     <div class="card-body">
                                         <h3 class="card-text">{{$value->TenSanPham}}</h3>
                                         <p class="card-text price">{{$value->GiaSanPham}}  đ</p>
@@ -112,7 +110,7 @@
                                         <span class="price-info">
                                             <strong>Giá: {{$value->GiaSanPham}} đ</strong>
                                         </span>
-                                        <span>{!!html_entity_decode($value->MoTa)!!}</span>
+                                        <span style="text-align:left;">{!!html_entity_decode($value->MoTa)!!}</span>
                                     </div>
                                 </div>
                             </a>

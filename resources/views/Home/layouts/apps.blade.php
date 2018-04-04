@@ -13,7 +13,7 @@
     <script type="text/javascript" src="{{asset('js/fontawesome-all.js')}}">
 
     </script>
-    <title>Thực tập</title>
+    <title>@yield('title','GIỐNG CÂY TRỒNG CỬU LONG')</title>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;

@@ -14,7 +14,7 @@ class SanPhamController extends Controller
     public function index()
     {
         $danhmuc = DanhMuc::where('TrangThai',1)->get();
-        $sanpham = SanPham::paginate(10);
+        $sanpham = SanPham::paginate(5);
         return view('administrator.SanPham.indexSanPham')->with(['sanpham' => $sanpham, 'danhmuc' =>$danhmuc]);
     }
     public function getThemSanPham()
@@ -112,7 +112,7 @@ class SanPhamController extends Controller
             if($request->hasFile('HinhAnh'))
             {
                 $file_path = $_SERVER['DOCUMENT_ROOT'].'/cuulongseed/public/Hinh-Anh/San-Pham/'.$sanpham->HinhAnh;
-                if(file_exists($file_path)) {
+                if(file_exists($file_path) && $sanpham->HinhAnh !== "noimage.jpg") {
                     unlink($file_path);
                 }
                 $ext = ['gif','jpg','jpge','png','svg'];
@@ -132,9 +132,6 @@ class SanPhamController extends Controller
                 // $path= $request->file('HinhAnh')->storeAs(public_path('Hinh-Anh'), $filenameToStore);
                 $request->HinhAnh->move(public_path('Hinh-Anh/San-Pham/'),$filenameToStore);
                 $sanpham->HinhAnh = $filenameToStore;
-            }
-            else {
-                $sanpham->HinhAnh = 'noimage.jpg';
             }
             $sanpham->save();
             if($sanpham)

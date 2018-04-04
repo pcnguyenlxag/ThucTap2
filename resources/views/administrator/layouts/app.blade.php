@@ -51,28 +51,19 @@
                     <li><a class="treeview-item" href="{{Route('sanpham')}}"><i class="fab fa-product-hunt pr-1"></i> Sản Phẩm</a></li>
                 </ul>
             </li>
-            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop pr-1"></i><span class="app-menu__label">QL Trang</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon far fa-images pr-1"></i><span class="app-menu__label">QL Trang</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="{{Route('suatrang')}}"><i class="fas fa-align-left pr-1"></i> Slider</a></li>
                     <li><a class="treeview-item" href="{{Route('getsubtrang')}}"><i class="fab fa-product-hunt pr-1"></i> Quảng Cáo</a></li>
-                    <li><a class="treeview-item" href="{{Route('getbanner')}}"><i class="fab fa-product-hunt pr-1"></i> Banner</a></li>
+                    <li><a class="treeview-item" href="{{Route('getbanner')}}"><i class="far fa-calendar pr-1"></i> Banner</a></li>
                 </ul>
             </li>
             @if(Auth::user()->level == 1)
-            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop pr-1"></i><span class="app-menu__label">QL Nhân Viên</span><i class="treeview-indicator fa fa-angle-right"></i></a></li>
+                        <li><a class="app-menu__item" href="{{Route('nhanvien')}}"><i class="app-menu__icon far fa-user pr-1"></i><span class="app-menu__label">QL Nhân Viên</span></a></li>
             @endif
         </ul>
     </aside>
     <main class="app-content">
-        <div class="app-title">
-            @if(Request::is('admincuulong/danhmuc')? $name='Quản Lý Danh Mục' and $dec='Bạn có thể chỉnh sửa danh mục sản phẩm' and $sym='fas fa-align-left':
-            Request::is('admincuulong/danhmuc/them')?$name='Thêm Danh Mục' and $dec='Bạn có thể thêm danh mục sản phẩm' and $sym='fas fa-plus':'')
-            <div>
-                <h1><i class="{{$sym}} pr-2"></i>{{$name}}</h1>
-                <p>{{$dec}}</p>
-            </div>
-            @endif
-        </div>
 
             @yield('content')
 

@@ -52,4 +52,12 @@ Route::middleware('auth')->prefix('admincuulong')->group(function() {
         Route::get('banner', 'administrator\administratorController@getBanner')->name('getbanner');
         Route::post('banner', 'administrator\administratorController@postThemBanner')->name('thembanner');
     });
+    Route::prefix('nhanvien')->group(function(){
+        Route::get('', 'administrator\NhanVienController@getNhanVien')->name('nhanvien');
+        Route::get('themnhanvien', 'administrator\NhanVienController@getThemNhanVien')->name('themnhanvien');
+        Route::post('themnhanvien', 'administrator\NhanVienController@postThemNhanVien');
+        // Route::get('suanhanvien/{id}', 'administrator\NhanVienController@getSuaNhanVien')->name('suanhanvien');
+        Route::get('/{id}', 'administrator\NhanVienController@getSuaNhanVien')->name('suanhanvien');
+        Route::get('xoanhanvien/{id}', 'administrator\NhanVienController@getXoaNhanVien')->name('xoanhanvien');
+    });
 });

@@ -1,8 +1,13 @@
 @extends('administrator.layouts.app')
 @section('title','Quản lý trang')
 @section('content')
+<div class="app-title">
+    <div>
+        <h1><i class="fas fa-plus pr-2"></i>Danh Sách Quảng Cáo</h1>
+        <p>Bạn có thể quản lý quảng cáo</p>
+    </div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<?php $path='/cuulongseed/public/Hinh-Anh/Slider/' ?>
 @foreach($errors->all() as $err)
     <div class="alert alert-warning" role="alert">
         {{$err}}
@@ -48,7 +53,7 @@
                     @foreach($subslider as $ssl)
                     <tr>
                         <th style="width:15%;">{{$ssl->ID}}</th>
-                        <td style="width:65%;" ><img src="{{$path}}{{$ssl->HinhAnh}}" class="img-thumbnail img-fluid" style="max-height:7rem;"></td>
+                        <td style="width:65%;" ><img src="/cuulongseed/public/Hinh-Anh/Slider/{{$ssl->HinhAnh}}" class="img-thumbnail img-fluid" style="max-height:7rem;"></td>
                         <td style="width:20%;">
                             <a href="{{Route('getxoaslider',$ssl->ID)}}" class="btn btn-danger btn-sm xoa">
                                 <i class="far fa-trash-alt" aria-hidden="true"></i>

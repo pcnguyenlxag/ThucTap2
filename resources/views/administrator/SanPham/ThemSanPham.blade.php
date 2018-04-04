@@ -1,6 +1,12 @@
 @extends('administrator.layouts.app')
 @section('title','Quản lý chủ đề')
 @section('content')
+<div class="app-title">
+    <div>
+        <h1><i class="fas fa-plus pr-2"></i>Thêm Sản Phẩm</h1>
+        <p>Bạn có thể thêm sản phẩm</p>
+    </div>
+</div>
 @foreach($errors->all() as $err)
      <div class="alert alert-danger" role="alert">
          {{$err}}
