@@ -66,7 +66,7 @@ class NhanVienController extends Controller
    public function getSuaNhanVien(Request $request)
    {
        $nhanvien = User::find($request->id);
-       if($nhanvien)
+       if($nhanvien && Auth::user()->id !=$request->id )
        {
            if($nhanvien->level === 1)
            {
@@ -80,17 +80,17 @@ class NhanVienController extends Controller
            return redirect()->back();
        }
        else
-       return redirect()->back()->withErrors(['errors' => ['Đã có lỗi xảy ra']]);
+       return redirect()->back()->withErrors(['errors' => ['Bạn không thể thay đổi quyền hạn chính mình']]);
    }
 
     public function getXoaNhanVien(Request $request)
     {
         $nhanvien = User::find($request->id);
-        if($nhanvien)
+        if($nhanvien && Auth::user()->id !=$request->id)
         {
             $nhanvien->delete();
             return redirect(Route('nhanvien'));
         }
-        return redirect()->back()->withErrors(['errors' => ['Không thể xóa nhân viên']]);
+        return redirect()->back()->withErrors(['errors' => ['Không thể xóa chính mình']]);
     }
 }
