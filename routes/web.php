@@ -60,4 +60,9 @@ Route::middleware('auth')->prefix('admincuulong')->group(function() {
         Route::get('/{id}', 'administrator\NhanVienController@getSuaNhanVien')->name('suanhanvien');
         Route::get('xoanhanvien/{id}', 'administrator\NhanVienController@getXoaNhanVien')->name('xoanhanvien');
     });
+    Route::prefix('taikhoan')->group(function(){
+        Route::get('', 'administrator\TaiKhoanController@getTaiKhoan')->name('suataikhoan');
+        Route::post('', 'administrator\TaiKhoanController@postSuaTaiKhoan');
+        Route::post('', 'administrator\TaiKhoanController@postDoiMK');
+    });
 });

@@ -22,7 +22,7 @@
                  <input type="text" class="form-control" id="name" name="name" placeholder="Nhập Tên Nhân Viên">
              </div>
              <div class="col-md-4 col-sm-6">
-                 <label for="TenDanhMuc">Số điệ thoại</label>
+                 <label for="TenDanhMuc">Số điện thoại</label>
                  <input type="text" class="form-control" id="phone" name="phone" placeholder="Nhập SDT nhân viên">
              </div>
          </div>
