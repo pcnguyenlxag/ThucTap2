@@ -50,35 +50,7 @@
         </div>
     </div>
 </div>
-<!-- ***************** -->
-<!-- <div class="category d-sm-none  d-md-block">
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-md-3">
-                <div class="category-slider">
-                    <a href="">
-                        <img class="rounded img-fluid" src="http://via.placeholder.com/250x150" alt="">
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="category-slider">
-                    <a href="">
-                        <img class="rounded img-fluid" src="http://via.placeholder.com/250x150" alt="">
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="category-slider">
-                    <a href="">
-                        <img class="rounded img-fluid" src="http://via.placeholder.com/250x150" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- ******************* -->
+
 <!-- ******************************* -->
 <div class="product">
     <div class="container-fluid">
@@ -98,7 +70,7 @@
                     <div class="product-item">
                         <div class="row">
                             @foreach($product as $value)
-                            <a class="ml-3 mb-3 item" href="{{url('sanpham/chitiet/'.$value->ID)}}">
+                            <a class="ml-3 mb-3 item" href="{{url('chitietsanpham/'.$value->ID)}}">
                                 <div class="card">
                                     <img width="150" height="180" class="card-img-top" src="/cuulongseed/public/Hinh-Anh/San-Pham/{{$value->HinhAnh}}" alt="{{$value->TenSanPham}}">
                                     <div class="card-body">

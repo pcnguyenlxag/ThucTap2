@@ -11,7 +11,6 @@
                 </div>
                 @endforeach
             </div>
-
             <div class="col-md-9">
                 <form method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
@@ -35,7 +34,7 @@
                                 <div class="product-detail-shopping">
                                     <div class="product-detail-amount" style="text-align:left;">
                                         <label style="font-weight:bold" for="">Số Lượng: </label>
-                                        <input type="number" id="soluongsp" style="width:70px;" name="soluongsp" value="1"  min="1" value="1">
+                                        <input type="number" id="soluongsp" name="soluongsp" style="width:70px;" value="1"  min="1" value="1">
                                     </div>
                                     <div class="product-detail-cart mb-3">
                                         <button class="btn btn-primary text-uppercase text-white" type="submit"><i class="fas fa-cart-plus"></i> Thêm giỏ hàng</button>

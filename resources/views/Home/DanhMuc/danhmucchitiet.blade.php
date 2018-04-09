@@ -9,7 +9,7 @@
         <div class="product-item">
             <div class="row">
                 @foreach($catelory as $value)
-                <a class="ml-3 mb-3 item" href="{{url('sanpham/chitiet/'.$value->ID)}}">
+                <a class="ml-3 mb-3 item" href="{{url('chitietsanpham/'.$value->ID)}}">
                     <div class="card">
                         <img width="150" height="180" class="card-img-top" src="{{$path}}{{$value->HinhAnh}}" alt="{{$value->TenSanPham}}">
                         <div class="card-body">

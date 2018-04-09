@@ -9,7 +9,7 @@
                 <div class="menu-top-left">
                     <ul title="Giỏ Hàng" class=" menu-top-block">
                         <li class="menu-top-content">
-                            <a class="color-top" href="">
+                            <a class="color-top" href="{{Route('giohang')}}">
                                 <div class="cart-item">
                                     <i class="fas fa-shopping-cart fa-2x"></i>
                                     <span style="color: black;">2</span>

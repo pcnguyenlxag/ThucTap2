@@ -5,37 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\SanPham;
 use Validator;
+use Cart;
 
 class GioHangController extends Controller
 {
 
-    public function getGioHangSanPham(Request $request)
+    public function postGioHangSanPham(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'soluongsp' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator);
-        }
         $sanpham = SanPham::find($request->id);
-        // dd($sanpham->SoLuong, $request->soluongsp);
-        // if($sanpham->SoLuong >= $request->soluongsp)
-        // {
-            // if ($request->session()->has($request->id))
-            // {
-            //     $value = $request->session()->get($request->id);
-            //
-            //     $soluong = $value + $request->soluongsp;
-            //     dd($request->id, $value, $soluong, $request->soluongsp);
-            //     $request->session()->put($request->id, $soluong);
-            //     $value = $request->session()->get($request->id);
-            //     dd($value);
-            // }
-            // $request->session()->put($request->id, $request->soluongsp);
-            // return redirect()->back()->withErrors(['errors' => ['Sản phẩm them thanh cong']]);
-        }
-        // else
-        // return redirect()->back()->withErrors(['errors' => ['Sản phẩm không đủ']]);
+        if($sanpham->SoLuong < $request->soluongsp)
+            return redirect()->back()->withErrors(['errors' => ['Số lượng hiện tại không đủ']]);
+        Cart::add(['id' => $sanpham->ID, 'name' => $sanpham->TenSanPham, 'qty' => $request->soluongsp, 'price' => $sanpham->GiaSanPham, 'options' => ['img' => $sanpham->HinhAnh]]);
+        return redirect()->back()->withErrors(['errors' => ['Thêm sản phẩm thành công']]);
+    }
+    public function getGioHang()
+    {
+        $content = Cart::content();
+        return view('Home.GioHang.indexGioHang')->with(['content' => $content]);
     }
 
 }

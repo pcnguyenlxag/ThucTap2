@@ -12,11 +12,12 @@
 */
 //Page
 Route::get('/', 'HomeController@getProductIndex');
-Route::get('/sanpham/chitiet/{id}', 'HomeController@getProductByID');
+Route::get('/chitietsanpham/{id}', 'HomeController@getProductByID')->name('chitiet');
 Route::get('/danhmuc', 'HomeController@getCatelory');
 Route::get('/danhmuc/chitiet/{id}', 'HomeController@getCateloryByID');
 //Cart
-Route::post('/sanpham/chitiet/{id}', 'GioHangController@getGioHangSanPham')->name('sanphamgiohang');
+Route::post('/chitietsanpham/{id}', 'GioHangController@postGioHangSanPham')->name('sanphamgiohang');
+Route::get('/giohang', 'GioHangController@getGioHang')->name('giohang');
 //Auth
 Route::get('login', 'AuthController@getLogin')->name('login');
 Route::post('login', 'AuthController@postLogin');
