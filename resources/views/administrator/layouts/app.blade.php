@@ -44,7 +44,7 @@
             </div>
         </div>
         <ul class="app-menu">
-            <li><a class="app-menu__item" href="#"><i class="app-menu__icon fas fa-paint-brush pr-1"></i><span class="app-menu__label">QL Đơn Hàng</span></a></li>
+            <li><a class="app-menu__item" href="{{Route('hoadon')}}"><i class="app-menu__icon fas fa-paint-brush pr-1"></i><span class="app-menu__label">QL Đơn Hàng</span></a></li>
             <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop pr-1"></i><span class="app-menu__label">QL Sản Phẩm</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a class="treeview-item" href="{{Route('danhmuc')}}"><i class="fas fa-align-left pr-1"></i> Danh Mục Sản Phẩm</a></li>

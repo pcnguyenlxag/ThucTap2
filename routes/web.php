@@ -12,11 +12,11 @@
 */
 //Page
 Route::get('/', 'HomeController@getProductIndex');
-
 Route::get('/sanpham/chitiet/{id}', 'HomeController@getProductByID');
 Route::get('/danhmuc', 'HomeController@getCatelory');
 Route::get('/danhmuc/chitiet/{id}', 'HomeController@getCateloryByID');
-
+//Cart
+Route::post('/sanpham/chitiet/{id}', 'GioHangController@getGioHangSanPham')->name('sanphamgiohang');
 //Auth
 Route::get('login', 'AuthController@getLogin')->name('login');
 Route::post('login', 'AuthController@postLogin');
@@ -64,5 +64,11 @@ Route::middleware('auth')->prefix('admincuulong')->group(function() {
         Route::get('', 'administrator\TaiKhoanController@getTaiKhoan')->name('suataikhoan');
         Route::post('', 'administrator\TaiKhoanController@postSuaTaiKhoan');
         Route::post('', 'administrator\TaiKhoanController@postDoiMK');
+    });
+    Route::prefix('hoadon')->group(function(){
+        Route::get('', 'administrator\HoaDonController@getHoaDon')->name('hoadon');
+        Route::get('chitiet/{id}', 'administrator\HoaDonController@getChiTietHD')->name('cthoadon');
+        Route::get('chitiet/trangthai/{id}', 'administrator\HoaDonController@getSuaTrangThaiHD')->name('trangthaihoadon');
+        Route::get('xoa/{id}', 'administrator\HoaDonController@getXoaChiTietHD')->name('xoacthoadon');
     });
 });
