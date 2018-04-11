@@ -12,7 +12,7 @@
                             <a class="color-top" href="{{Route('giohang')}}">
                                 <div class="cart-item">
                                     <i class="fas fa-shopping-cart fa-2x"></i>
-                                    <span style="color: black;">2</span>
+                                    <span style="color: black;">{{Cart::count()}}</span>
                                 </div>
                             </a>
                         </li>
@@ -35,10 +35,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item {{ Request::is('/') ? 'active':''}}">
-                        <a class="nav-link" href="/">Trang Chủ<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{Route('homepage')}}">Trang Chủ<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item {{ Request::is('danhmuc') ? 'active':''}}">
-                        <a class="nav-link" href="danhmuc">Danh Mục Sản Phẩm</a>
+                        <a class="nav-link" href="{{Route('danhmucsanpham')}}">Danh Mục Sản Phẩm</a>
                     </li>
                     <li class="nav-item  {{ Request::is('#') ? 'active':''}}">
                         <a class="nav-link" href="#">Tuyển Dụng</a>

@@ -11,13 +11,17 @@
 |
 */
 //Page
-Route::get('/', 'HomeController@getProductIndex');
+Route::get('/', 'HomeController@getProductIndex')->name('homepage');
 Route::get('/chitietsanpham/{id}', 'HomeController@getProductByID')->name('chitiet');
-Route::get('/danhmuc', 'HomeController@getCatelory');
+Route::get('/danhmuc', 'HomeController@getCatelory')->name('danhmucsanpham');
 Route::get('/danhmuc/chitiet/{id}', 'HomeController@getCateloryByID');
 //Cart
 Route::post('/chitietsanpham/{id}', 'GioHangController@postGioHangSanPham')->name('sanphamgiohang');
 Route::get('/giohang', 'GioHangController@getGioHang')->name('giohang');
+Route::get('/giohang/xoa/{id}', 'GioHangController@getXoaSanPhamGioHang')->name('xoasanphamgiohang');
+Route::get('/giohang/{id}/{soluong}', 'GioHangController@postCapNhatGioHang')->name('capnhatsanphamgiohang');
+Route::get('/dathang', 'GioHangController@getDatHang')->name('dathang');
+Route::post('/dathang', 'GioHangController@postDatHang');
 //Auth
 Route::get('login', 'AuthController@getLogin')->name('login');
 Route::post('login', 'AuthController@postLogin');
@@ -70,6 +74,7 @@ Route::middleware('auth')->prefix('admincuulong')->group(function() {
         Route::get('', 'administrator\HoaDonController@getHoaDon')->name('hoadon');
         Route::get('chitiet/{id}', 'administrator\HoaDonController@getChiTietHD')->name('cthoadon');
         Route::get('chitiet/trangthai/{id}', 'administrator\HoaDonController@getSuaTrangThaiHD')->name('trangthaihoadon');
-        Route::get('xoa/{id}', 'administrator\HoaDonController@getXoaChiTietHD')->name('xoacthoadon');
+        Route::get('chitiet/xoasanpham/{id}', 'administrator\HoaDonController@getXoaChiTietHD')->name('xoacthoadon');
+        Route::get('xoa/{id}', 'administrator\HoaDonController@getXoaHoaDon')->name('xoahoadon');
     });
 });

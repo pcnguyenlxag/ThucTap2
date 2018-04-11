@@ -57,10 +57,10 @@
                         @endforeach
                         <tr>
                             <td colspan="4"><strong>Tổng Tiền</strong></td>
-                            <td>{{$ct->TongTien}}</td>
+                            <td>{{$hoadon->TongTien}}</td>
                             <td style="width:10%">
-                                <a href="{{Route('trangthaihoadon',$ct->ID)}}" class="btn btn-sm @if($ct->TrangThai === 1) btn-success @else btn-danger @endif">
-                                    @if($ct->TrangThai === 1){!!'Đã Giao'!!}@else{!!'Đang Chờ'!!}@endif
+                                <a href="{{Route('trangthaihoadon',$hoadon->ID)}}" class="btn btn-sm @if($hoadon->TrangThai === 1) btn-success @else btn-danger @endif">
+                                    @if($hoadon->TrangThai === 1){!!'Đã Giao'!!}@else{!!'Đang Chờ'!!}@endif
                                 </a>
                             </td>
                         </tr>
@@ -70,7 +70,6 @@
                 <div class="float-right mr-3">
                     {!! $chitiet->render() !!}
                 </div>
-                <button type="submit" class="btn btn-primary">Khong ten</button>
             </div>
         </div>
     </div>

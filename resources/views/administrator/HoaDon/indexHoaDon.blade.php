@@ -35,17 +35,17 @@
                         <form method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <tr>
-                                <td id="name" style="width:7%">{{collect($hoadon)->where('IDUser',$kh->ID)->first()->ID}}</td>
+                                <td id="name" style="width:7%">{{collect($hoadon)->where('IDKhachHang',$kh->ID)->first()->ID}}</td>
                                 <td style="width:23%;"><a href="{{Route('cthoadon',$kh->ID)}}">{{$kh->TenKhachHang}}</a></td>
                                 <td style="width:20%;">{{$kh->SoDienThoai}}</td>
                                 <td style="width:30%;">{{$kh->DiaChi}}</td>
                                 <td style="width:10%">
-                                    <span class="badge @if((collect($hoadon)->where('IDUser',$kh->ID)->first()->TrangThai)===1) badge-primary @else badge-danger @endif">
-                                        @if((collect($hoadon)->where('IDUser',$kh->ID)->first()->TrangThai)===1){{'Đã Giao'}}@else{{'Đang Chờ'}}@endif
+                                    <span class="badge @if((collect($hoadon)->where('IDKhachHang',$kh->ID)->first()->TrangThai)===1) badge-primary @else badge-danger @endif">
+                                        @if((collect($hoadon)->where('IDKhachHang',$kh->ID)->first()->TrangThai)===1){{'Đã Giao'}}@else{{'Đang Chờ'}}@endif
                                     </span>
                                 </td>
                                 <td style="width:10%">
-                                    <a href="" class="btn btn-danger btn-sm xoa">
+                                    <a href="{{Route('xoahoadon', $kh->ID)}}" class="btn btn-danger btn-sm xoa">
                                         <i class="far fa-trash-alt" aria-hidden="true"></i>
                                     </a>
                                 </td>
@@ -55,7 +55,7 @@
                     </tbody>
                 </table>
                 <div class="float-right mr-3">
-                    {!! $khachhang->render() !!}
+
                 </div>
             </div>
         </div>

@@ -15,18 +15,17 @@ class HoaDonController extends Controller
         $khachhang= KhachHang::paginate(10);
         $hoadon = HoaDon::get();
         // $hoadon = DB::table('hoadon as h')->join('khachhang as k', 'k.ID','=','h.IDUser')->select('ID','TrangThai')->get();
-        return view('administrator.HoaDon.indexHoaDon')->with(['khachhang' => $khachhang , 'hoadon'=>$hoadon]);
+        return view('administrator.HoaDon.indexHoaDon')->with(['hoadon'=>$hoadon, 'khachhang' => $khachhang]);
     }
     public function getChiTietHD(Request $request)
     {
+        $hoadon = HoaDon::find($request->id);
         $khachhang = KhachHang::find($request->id);
         $chitiet = DB::table('chitiethoadon as c')
         ->join('hoadon as h', 'c.IDHoaDon','=','h.ID')
-        ->join('sanpham as s', 'c.IDSanPham','=','s.ID')->select('c.*', 's.TenSanPham', 's.GiaSanPham', 's.SoLuong','h.*')
+        ->join('sanpham as s', 'c.IDSanPham','=','s.ID')->select('c.*', 's.TenSanPham', 's.GiaSanPham', 's.SoLuong')
         ->where('h.IDKhachHang', '=', $request->id)->paginate(10);
-
-
-        return view('administrator.HoaDon.ChiTietHD')->with(['khachhang' => $khachhang, 'chitiet'=>$chitiet]);
+        return view('administrator.HoaDon.ChiTietHD')->with(['hoadon'=> $hoadon, 'khachhang' => $khachhang, 'chitiet'=>$chitiet]);
     }
     public function getXoaChiTietHD(Request $request)
     {
@@ -35,7 +34,7 @@ class HoaDonController extends Controller
         {
             if(DB::table('chitiethoadon')->where('IDChiTiet', $request->id))
             $chitiet = DB::table('chitiethoadon')->where('IDChiTiet', $request->id)->delete();
-            return redirect(Route('xoacthoadon'));
+            return redirect(Route('cthoadon'));
         }
         return redirect()->back()->withErrors(['errors' => ['Xóa sản phẩm không thành công']]);
     }
@@ -59,16 +58,23 @@ class HoaDonController extends Controller
         return redirect()->back()->withErrors(['errors' => ['Bạn không thể thay đổi quyền hạn chính mình']]);
     }
     // ********* hoa dơn ************
-    public function xoaHoaDon(Request $request)
+    public function getXoaHoaDon(Request $request)
     {
-        $chitiet = DB::table('hoadon')->where('ID', $request->id);
-        if($chitiet)
+
+        // $hoadon = HoaDon::where('IDKhachHang', $request->id)->select('ID')->get();
+        $hoadon = DB::table('hoadon')->where('IDKhachHang', $request->id)->first();
+        if($hoadon)
         {
-            if(DB::table('chitiethoadon')->where('IDHoaDon', $request->id))
+            if(DB::table('chitiethoadon')->where('IDHoaDon', $hoadon->ID))
             {
-                DB::table('chitiethoadon')->where('IDHoaDon', $request->id)->delete();
-                DB::table('hoadon')->where('ID', $request->id)->delete();
+                DB::table('chitiethoadon')->where('IDHoaDon', $hoadon->ID)->delete();
+                DB::table('hoadon')->where('IDKhachHang', $request->id)->delete();
+                DB::table('KhachHang')->where('ID', $request->id)->delete();
                 return redirect(Route('hoadon'));
+            }
+            else
+            {
+                DB::table('hoadon')->where('IDKhachHang', $request->id)->delete();
             }
             return redirect()->back()->withErrors(['errors' => ['xóa hóa đơn không thành công']]);
         }

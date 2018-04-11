@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{{asset('/css/custom.css')}}">
 
     <script type="text/javascript" src="{{asset('js/fontawesome-all.js')}}">
-
     </script>
     <title>@yield('title','GIỐNG CÂY TRỒNG CỬU LONG')</title>
     <script>(function(d, s, id) {
@@ -36,5 +35,6 @@
     <script src="{{asset('js/jquery-3.3.1.js')}}"></script>
     <script src="{{asset('js/popper.js')}}"></script>
     <script src="{{asset('js/bootstrap.js')}}"></script>
+    <script src="{{asset('js/customadmin.js')}}"></script>
 </body>
 </html>

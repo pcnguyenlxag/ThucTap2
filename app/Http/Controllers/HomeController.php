@@ -18,7 +18,9 @@ class HomeController extends Controller
     }
     public function getProductByID($id){
         $product=SanPham::where('ID','=', $id)->select('sanpham.*')->first();
-        return view('Home.SanPham.productDetail', ['product'=>$product]);
+        $sanpham = SanPham::orderByRaw('RAND()')->take(3)->get();
+
+        return view('Home.SanPham.productDetail', ['product'=>$product, 'sanpham'=>$sanpham]);
     }
     public function getCatelory(){
         $catelory=DanhMuc::orderBy('ID', 'desc')->paginate(10);

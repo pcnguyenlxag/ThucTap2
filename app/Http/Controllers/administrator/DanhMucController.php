@@ -5,6 +5,7 @@ namespace App\Http\Controllers\administrator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\DanhMuc;
+use App\SanPham;
 use Validator;
 
 class DanhMucController extends Controller
@@ -125,22 +126,25 @@ class DanhMucController extends Controller
     public function getXoaDanhMuc(Request $request)
     {
         $danhmuc = DanhMuc::find($request->id);
-        if($danhmuc)
+        $sanpham = SanPham::where('IdDanhMuc', $request->id)->first();
+        if($danhmuc && $sanpham===null)
         {
-            //check dien kien co san pham
-            if($danhmuc->HinhAnh==='noimage.jpg')
-            {
-                $danhmuc->delete();
-            }
-            else {
-                $file_path = $_SERVER['DOCUMENT_ROOT'].'/cuulongseed/public/Hinh-Anh/'.$danhmuc->HinhAnh;
-                if(file_exists($file_path)) {
-                    unlink($file_path);
+                if($danhmuc->HinhAnh==='noimage.jpg')
+                {
+                    $danhmuc->delete();
                 }
-                $danhmuc->delete();
-            }
-            return redirect(Route('danhmuc'));
+                else
+                {
+                    $file_path = $_SERVER['DOCUMENT_ROOT'].'/cuulongseed/public/Hinh-Anh/'.$danhmuc->HinhAnh;
+                    if(file_exists($file_path))
+                    {
+                        unlink($file_path);
+                    }
+                    $danhmuc->delete();
+                }
+                return redirect(Route('danhmuc'));
+
         }
-        return redirect()->back()->withErrors(['errors' => ['Không thể xóa danh mục']]);
+        return redirect()->back()->withErrors(['errors' => ['Có sản phẩm bên trong. Không thể xóa danh mục']]);
     }
 }

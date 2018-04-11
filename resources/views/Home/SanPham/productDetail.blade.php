@@ -60,40 +60,19 @@
                 <div class="sidebar-card">
                     <h1 class="product-title">sản phẩm nổi bật</h1>
                     <ul class="product-item mb-0">
+                        @foreach($sanpham as $item)
                         <li class="content my-1">
-                            <a href="#" class="link">
+                            <a href="{{url('chitietsanpham/'.$item->ID)}}" class="link">
                                 <div class="col-md-5 col-sm-5 col-xs-5 px-0">
-                                    <img class="sidebar-img" src="images/kho-qua.jpg" alt="">
+                                    <img class="sidebar-img" src="/cuulongseed/public/Hinh-Anh/San-Pham/{{$item->HinhAnh}}" alt="">
                                 </div>
                                 <div class="col-md-7 col-sm-7 col-xs-7 px-1 py-3">
-                                    <div class="sidebar-title">Giống bắp siêu hạt</div>
-                                    <div class="sidebar-price">5.000 đ</div>
+                                    <div class="sidebar-title">{{$item->TenSanPham}}</div>
+                                    <div class="sidebar-price">{{$item-> GiaSanPham}} đ</div>
                                 </div>
                             </a>
                         </li>
-                        <li class="content my-1">
-                            <a href="#" class="link">
-                                <div class="col-md-5 col-sm-5 col-xs-5 px-0">
-                                    <img class="sidebar-img" src="images/kho-qua.jpg" alt="">
-                                </div>
-                                <div class="col-md-7 col-sm-7 col-xs-7 px-1 py-3">
-                                    <div class="sidebar-title">Giống bắp siêu hạt</div>
-                                    <div class="sidebar-price">5.000 đ</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="content my-1">
-                            <a href="#" class="link">
-                                <div class="col-md-5 col-sm-5 col-xs-5 px-0">
-                                    <img class="sidebar-img" src="images/kho-qua.jpg" alt="">
-                                </div>
-
-                                <div class="col-md-7 col-sm-7 col-xs-7 px-1 py-3">
-                                    <div class="sidebar-title">Giống bắp siêu hạt</div>
-                                    <div class="sidebar-price">5.000 đ</div>
-                                </div>
-                            </a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="sidebar-card">

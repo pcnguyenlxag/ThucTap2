@@ -12,6 +12,6 @@ class KhachHang extends Model
     public $timestamps = true;
 
     public function khachhang(){
-    return $this->hasMany('App\HoaDon');
-  }
+        return $this->hasMany('App\HoaDon');
+    }
 }
