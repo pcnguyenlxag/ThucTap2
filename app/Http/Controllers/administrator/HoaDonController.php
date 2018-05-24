@@ -35,6 +35,12 @@ class HoaDonController extends Controller
             if(DB::table('chitiethoadon')->where('IDChiTiet', $request->id))
             $chitiet = DB::table('chitiethoadon')->where('IDChiTiet', $request->id)->delete();
             return redirect(Route('cthoadon'));
+            // return redirect()->back();
+        }
+        else {
+            DB::table('hoadon')->where('IDKhachHang', $request->id)->delete();
+            DB::table('KhachHang')->where('ID', $request->id)->delete();
+            return redirect(Route('hoadon'));
         }
         return redirect()->back()->withErrors(['errors' => ['Xóa sản phẩm không thành công']]);
     }

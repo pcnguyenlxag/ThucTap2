@@ -31,11 +31,13 @@ class GioHangController extends Controller
         Cart::remove($request->id);
         return redirect()->back();
     }
-    public function postCapNhatGioHang(Request $request)
+    public function getCapNhatGioHang(Request $request)
     {
-        dd($request->soluong);
-        Cart::update($request->id,$request->soluong);
-        return view('Home.GioHang.indexGioHang')->with(['content' => $content]);
+        if(Request::ajax())
+            echo "oke";
+        // dd($request->soluong);
+        // Cart::update($request->id,$request->soluong);
+        // return view('Home.GioHang.indexGioHang')->with(['content' => $content]);
     }
     public function getDatHang()
     {

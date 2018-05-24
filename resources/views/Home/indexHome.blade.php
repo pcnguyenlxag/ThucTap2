@@ -88,6 +88,9 @@
                             </a>
                             @endforeach
                         </div> <!-- end 1 row -->
+                        <div class="float-right mr-4">
+                            {!! $product->render() !!}
+                        </div>
                     </div>
                 </div>
             </div>

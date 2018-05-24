@@ -23,6 +23,9 @@
                 </a>
                 @endforeach
             </div> <!-- end 1 row -->
+            <div class="float-right mr-4">
+                {!! $catelory->render() !!}
+            </div>
         </div>
     </div>
 </div>

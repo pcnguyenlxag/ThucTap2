@@ -13,7 +13,7 @@ class HomeController extends Controller
         $subslider=Slider::where([['TrangThai',1],['TenSlide','Sub-Slider']])->get();
         $banner=Slider::where([['TrangThai',1],['TenSlide','Banner']])->get();
         $slider=Slider::where([['TrangThai',1],['TenSlide','Slider']])->get();
-        $product=SanPham::orderBy('ID', 'desc')->paginate(10);
+        $product=SanPham::orderBy('ID', 'desc')->paginate(8);
         return view('Home.indexHome')->with(['product'=>$product, 'slider'=>$slider, 'subslider'=>$subslider, 'banner'=>$banner]);
     }
     public function getProductByID($id){

@@ -8,12 +8,13 @@ $(document).ready(function() {
         var soluong = $(this).parents().parents().find('.soluong').val();
         var token=  $("input[name='_token']").val();
         $.ajax({
-            url:url('/giohang/'+id+'/'+soluong),
+            url: '/giohang/'+id+'/'+soluong,
             type: 'get',
-            data:{'_token':token, 'id': $item->rowId, soluong: $item->qty},
+            data:{"_token":token, "id":id, "soluong":soluong},
             success: function(data)
             {
-
+                if(data =="oke")
+                    alert("yes");
             }
         });
     });

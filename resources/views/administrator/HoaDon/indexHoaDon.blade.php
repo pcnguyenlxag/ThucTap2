@@ -54,9 +54,9 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="float-right mr-3">
-
-                </div>
+                <!-- <div class="float-right mr-3">
+                    {!! $product->render() !!}
+                </div> -->
             </div>
         </div>
     </div>

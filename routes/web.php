@@ -19,7 +19,7 @@ Route::get('/danhmuc/chitiet/{id}', 'HomeController@getCateloryByID');
 Route::post('/chitietsanpham/{id}', 'GioHangController@postGioHangSanPham')->name('sanphamgiohang');
 Route::get('/giohang', 'GioHangController@getGioHang')->name('giohang');
 Route::get('/giohang/xoa/{id}', 'GioHangController@getXoaSanPhamGioHang')->name('xoasanphamgiohang');
-Route::get('/giohang/{id}/{soluong}', 'GioHangController@postCapNhatGioHang')->name('capnhatsanphamgiohang');
+Route::get('/giohang/{id}/{soluong}', 'GioHangController@getCapNhatGioHang')->name('capnhatsanphamgiohang');
 Route::get('/dathang', 'GioHangController@getDatHang')->name('dathang');
 Route::post('/dathang', 'GioHangController@postDatHang');
 //Auth
@@ -68,7 +68,6 @@ Route::middleware('auth')->prefix('admincuulong')->group(function() {
     Route::prefix('taikhoan')->group(function(){
         Route::get('', 'administrator\TaiKhoanController@getTaiKhoan')->name('suataikhoan');
         Route::post('', 'administrator\TaiKhoanController@postSuaTaiKhoan');
-        Route::post('', 'administrator\TaiKhoanController@postDoiMK');
     });
     Route::prefix('hoadon')->group(function(){
         Route::get('', 'administrator\HoaDonController@getHoaDon')->name('hoadon');
