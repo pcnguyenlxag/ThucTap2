@@ -25,23 +25,28 @@ class HoaDonController extends Controller
         ->join('hoadon as h', 'c.IDHoaDon','=','h.ID')
         ->join('sanpham as s', 'c.IDSanPham','=','s.ID')->select('c.*', 's.TenSanPham', 's.GiaSanPham', 's.SoLuong')
         ->where('h.IDKhachHang', '=', $request->id)->paginate(10);
+        if($chitiet->isEmpty())
+        {
+            DB::table('hoadon')->where('IDKhachHang', $request->id)->delete();
+            DB::table('KhachHang')->where('ID', $request->id)->delete();
+            return redirect(Route('hoadon'));
+        }
         return view('administrator.HoaDon.ChiTietHD')->with(['hoadon'=> $hoadon, 'khachhang' => $khachhang, 'chitiet'=>$chitiet]);
     }
     public function getXoaChiTietHD(Request $request)
     {
         $chitiet = DB::table('chitiethoadon')->where('IDChiTiet', $request->id);
+        // dd($chitiet);
+        // dd(!$chitiet);
         if($chitiet)
         {
             if(DB::table('chitiethoadon')->where('IDChiTiet', $request->id))
             $chitiet = DB::table('chitiethoadon')->where('IDChiTiet', $request->id)->delete();
-            return redirect(Route('cthoadon'));
-            // return redirect()->back();
+            return redirect()->back();
+            // return redirect(Route('cthoadon'));
+            return redirect()->action('HoaDonController@getChiTietHD', ['id' => $request->id]);
         }
-        else {
-            DB::table('hoadon')->where('IDKhachHang', $request->id)->delete();
-            DB::table('KhachHang')->where('ID', $request->id)->delete();
-            return redirect(Route('hoadon'));
-        }
+
         return redirect()->back()->withErrors(['errors' => ['Xóa sản phẩm không thành công']]);
     }
     public function getSuaTrangThaiHD(Request $request)

@@ -55,7 +55,7 @@
                     </tbody>
                 </table>
                 <!-- <div class="float-right mr-3">
-                    {!! $product->render() !!}
+                    {!! $khachhang->render() !!}
                 </div> -->
             </div>
         </div>
