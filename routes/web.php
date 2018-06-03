@@ -19,7 +19,7 @@ Route::get('/danhmuc/chitiet/{id}', 'HomeController@getCateloryByID');
 Route::post('/chitietsanpham/{id}', 'GioHangController@postGioHangSanPham')->name('sanphamgiohang');
 Route::get('/giohang', 'GioHangController@getGioHang')->name('giohang');
 Route::get('/giohang/xoa/{id}', 'GioHangController@getXoaSanPhamGioHang')->name('xoasanphamgiohang');
-Route::get('/giohang/{id}/{soluong}', 'GioHangController@getCapNhatGioHang')->name('capnhatsanphamgiohang');
+Route::post('/giohang/{id}/{soluong}', 'GioHangController@getCapNhatGioHang');
 Route::get('/dathang', 'GioHangController@getDatHang')->name('dathang');
 Route::post('/dathang', 'GioHangController@postDatHang');
 //Auth

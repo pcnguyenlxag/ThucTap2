@@ -4,17 +4,21 @@ $(document).ready(function() {
         return confirm('Bạn có muốn xóa "'+name+'"');
     });
     $('.suasanpham').click(function(){
+
         var id= $(this).attr('id');
-        var soluong = $(this).parents().parents().find('.soluong').val();
+        var soluong = $(this).parent().parent().find('.soluong').val();
         var token=  $("input[name='_token']").val();
         $.ajax({
-            url: '/giohang/'+id+'/'+soluong,
-            type: 'get',
+            url:'/cuulongseed/public/giohang/'+id+'/'+soluong,
+            type:'POST',
+            cache:false,
             data:{"_token":token, "id":id, "soluong":soluong},
-            success: function(data)
+            success:function(data)
             {
-                if(data =="oke")
-                    alert("yes");
+                if(data === "oke")
+                {
+                    window.location = "giohang"
+                }
             }
         });
     });

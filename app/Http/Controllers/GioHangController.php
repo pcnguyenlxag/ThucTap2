@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use Request;
 use App\SanPham;
 use App\KhachHang;
 use App\HoaDon;
@@ -33,11 +34,13 @@ class GioHangController extends Controller
     }
     public function getCapNhatGioHang(Request $request)
     {
-        if(Request::ajax())
-            echo "oke";
-        // dd($request->soluong);
-        // Cart::update($request->id,$request->soluong);
-        // return view('Home.GioHang.indexGioHang')->with(['content' => $content]);
+        if($request->ajax())
+        {
+            $id = $request->id;
+            $soluong = $request->soluong;
+            Cart::update($id, $soluong);
+            return "oke";
+        }
     }
     public function getDatHang()
     {
